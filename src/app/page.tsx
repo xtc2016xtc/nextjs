@@ -1,9 +1,5 @@
-import Image from "next/image";
-
-export default function Home() {
-  return (
-    <div className="text-red-500">
-      hello word
-    </div>
-  );
+import Button from "@/components/ui/Button";
+import { db } from "@/lib/db";
+export default async function Home() {
+  return <Button variant='ghost'>hello</Button>
 }
