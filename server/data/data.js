@@ -1,10 +1,17 @@
+// 定义名为kpis的导出常量数组，其中包含了一组业务关键绩效指标(KPIs)的数据结构
 export const kpis = [
   {
+     // _id字段，存储每个KPI对象的唯一标识符
     _id: "63bf8239f03239e002001612",
+    // 总利润指标
     totalProfit: "$212000.00",
+    // 总收入指标
     totalRevenue: "$283000.00",
+    // 总支出指标
     totalExpenses: "$71000.00",
+     // 按月划分的详细数据
     monthlyData: [
+       // 一月的数据
       {
         month: "january",
         revenue: "$15989.64",
@@ -90,6 +97,7 @@ export const kpis = [
         nonOperationalExpenses: "$4106.79",
       },
     ],
+    // 按天划分的详细数据
     dailyData: [
       { date: "2022-01-02", revenue: "$1498.94", expenses: "$430.64" },
       { date: "2022-01-03", revenue: "$935.08", expenses: "$329.32" },
