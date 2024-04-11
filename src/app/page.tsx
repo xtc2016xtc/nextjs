@@ -1,3 +1,5 @@
+import Button from "@/components/ui/Button"
+
 export default function Home() {
-  return <h1>hello,Next.js!</h1>
+  return <Button>登录</Button>
 }

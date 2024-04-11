@@ -17,6 +17,7 @@
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "csstype": "3.0.10",
     "date-fns": "^3.6.0",
     "encoding": "^0.1.13",
     "lucide-react": "^0.367.0",
@@ -32,6 +33,7 @@
     "react-loading-skeleton": "^3.4.0",
     "react-textarea-autosize": "^8.5.3",
     "tailwind-merge": "^2.2.2",
+    "yarn": "^1.22.22",
     "zod": "^3.22.4"
   },
   "devDependencies": {
