@@ -15,7 +15,7 @@ const Navbar = (props: Props) => {
       <FlexBetween gap="0.75rem">
         <PixIcon sx={{ fontSize: "28px" }} />
         <Typography variant="h4" fontSize="16px">
-          Finanseer
+          财务后台系统
         </Typography>
       </FlexBetween>
 
@@ -30,7 +30,7 @@ const Navbar = (props: Props) => {
               textDecoration: "inherit",
             }}
           >
-            dashboard
+            图表
           </Link>
         </Box>
         <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
@@ -42,7 +42,7 @@ const Navbar = (props: Props) => {
               textDecoration: "inherit",
             }}
           >
-            predictions
+            预测
           </Link>
         </Box>
       </FlexBetween>
