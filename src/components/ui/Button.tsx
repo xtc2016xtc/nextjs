@@ -1,8 +1,12 @@
+//国际化工具
 import { cn } from '@/lib/utils'
+//组件样式
 import { cva, VariantProps } from 'class-variance-authority'
+//图标
 import { Loader2 } from 'lucide-react'
+//按钮组件类型
 import { ButtonHTMLAttributes, FC } from 'react'
-
+//tailwindcss自定义样式
 export const buttonVariants = cva(
   'active:scale-95 inline-flex items-center justify-center rounded-md text-sm font-medium transition-color focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none',
   {
@@ -23,7 +27,7 @@ export const buttonVariants = cva(
     },
   }
 )
-
+//按钮属性以及类型
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
