@@ -4,6 +4,7 @@ import Transaction from "../models/Transaction.js";
 
 export const getAdmins = async (req, res) => {
   try {
+    // 获取所有管理员用户
     const admins = await User.find({ role: "admin" }).select("-password");
     res.status(200).json(admins);
   } catch (error) {
@@ -15,6 +16,7 @@ export const getUserPerformance = async (req, res) => {
   try {
     const { id } = req.params;
 
+    // 获取指定用户的统计数据
     const userWithStats = await User.aggregate([
       { $match: { _id: new mongoose.Types.ObjectId(id) } },
       {
@@ -28,6 +30,7 @@ export const getUserPerformance = async (req, res) => {
       { $unwind: "$affiliateStats" },
     ]);
 
+    // 获取用户关联的销售交易
     const saleTransactions = await Promise.all(
       userWithStats[0].affiliateStats.affiliateSales.map((id) => {
         return Transaction.findById(id);
@@ -37,6 +40,7 @@ export const getUserPerformance = async (req, res) => {
       (transaction) => transaction !== null
     );
 
+    // 返回用户统计数据和销售交易
     res
       .status(200)
       .json({ user: userWithStats[0], sales: filteredSaleTransactions });

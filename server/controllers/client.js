@@ -6,7 +6,7 @@ import getCountryIso3 from "country-iso-2-to-3";
 
 export const getProducts = async (req, res) => {
   try {
-    const products = await Product.find();
+    const products = await Product.find(); // 获取所有产品
 
     const productsWithStats = await Promise.all(
       products.map(async (product) => {
@@ -20,7 +20,7 @@ export const getProducts = async (req, res) => {
       })
     );
 
-    res.status(200).json(productsWithStats);
+    res.status(200).json(productsWithStats); // 返回包含统计数据的产品列表
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -28,8 +28,8 @@ export const getProducts = async (req, res) => {
 
 export const getCustomers = async (req, res) => {
   try {
-    const customers = await User.find({ role: "user" }).select("-password");
-    res.status(200).json(customers);
+    const customers = await User.find({ role: "user" }).select("-password"); // 获取所有顾客（用户）信息，不包括密码
+    res.status(200).json(customers); // 返回顾客列表
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -37,10 +37,10 @@ export const getCustomers = async (req, res) => {
 
 export const getTransactions = async (req, res) => {
   try {
-    // sort should look like this: { "field": "userId", "sort": "desc"}
+    // sort 参数应该是这样的格式: { "field": "userId", "sort": "desc"}
     const { page = 1, pageSize = 20, sort = null, search = "" } = req.query;
 
-    // formatted sort should look like { userId: -1 }
+    // 格式化 sort 参数，应该是这样的格式: { userId: -1 }
     const generateSort = () => {
       const sortParsed = JSON.parse(sort);
       const sortFormatted = {
@@ -57,9 +57,9 @@ export const getTransactions = async (req, res) => {
         { userId: { $regex: new RegExp(search, "i") } },
       ],
     })
-      .sort(sortFormatted)
-      .skip(page * pageSize)
-      .limit(pageSize);
+      .sort(sortFormatted) // 根据指定字段进行排序
+      .skip(page * pageSize) // 跳过指定数量的结果
+      .limit(pageSize); // 返回指定数量的结果
 
     const total = await Transaction.countDocuments({
       name: { $regex: search, $options: "i" },
@@ -68,7 +68,7 @@ export const getTransactions = async (req, res) => {
     res.status(200).json({
       transactions,
       total,
-    });
+    }); // 返回交易列表和总数
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -76,10 +76,10 @@ export const getTransactions = async (req, res) => {
 
 export const getGeography = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find(); // 获取所有用户信息
 
     const mappedLocations = users.reduce((acc, { country }) => {
-      const countryISO3 = getCountryIso3(country);
+      const countryISO3 = getCountryIso3(country); // 获取国家的 ISO3 代码
       if (!acc[countryISO3]) {
         acc[countryISO3] = 0;
       }
@@ -93,7 +93,7 @@ export const getGeography = async (req, res) => {
       }
     );
 
-    res.status(200).json(formattedLocations);
+    res.status(200).json(formattedLocations); // 返回格式化后的地理位置数据
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
