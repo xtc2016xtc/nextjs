@@ -78,9 +78,9 @@ switch(grade){
 }
 ```
 
-## typescript支持for和while循环，并且为一些内置类型如Array等提供了快捷迭代语法
+## typescript支持for和while循环，并且为一些内置类型如Array等提供了快捷迭代语法[循环迭代]
 ```typescript
-
+/* 迭代器 */
 //普通for
 for(let i = 1;i<=10;i++){
   console.log('点赞'+ i + '次')
@@ -91,4 +91,43 @@ let i = 1;
 while(i<=10){
   console.log('点赞'+i + '次')
 }
+
+/* for迭代器 */
+//定义数组
+let names:string[] = ['Jack','Rose']
+
+// for in 迭代器，遍历得到数组角标
+for(const i in names) {
+  console.log(i+':'+names[i])
+}
+
+//for of 迭代器，直接得到元素
+for(const name of names) {
+  console.log(name)
+}
+```
+
+## typescript通常利用function关键字声明函数，并且支持可选参数，默认参数，箭头函数等特殊语法[函数]
+```typescript
+/* 定义函数 */
+
+  //无返回值函数，返回void可以省略
+  function sayHello(name:string):void{
+    console.log('你好,'+name+'!')
+  }
+  sayHello('jack')
+
+  //有返回值
+  function sum(X:number,y:number):number{
+    return X+y
+  }
+  let result = sum(21,18)
+  console.log('21+18 =' + result)
+
+  //箭头函数
+  let sayHi = (name:string)=>{
+    console.log('你好'+name+'!')
+  }
+  sayHi('Rose')
+/*  */
 ```
