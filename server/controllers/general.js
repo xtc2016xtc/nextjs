@@ -12,19 +12,23 @@ export const getUser = async (req, res) => {
   }
 };
 
+
+/**
+ * 获取仪表盘统计数据。
+ * @param {Object} req - 请求对象。
+ * @param {Object} res - 响应对象。
+ * @returns {Object} - 包含仪表盘统计数据的 JSON 响应。
+ */
 export const getDashboardStats = async (req, res) => {
   try {
-    // hardcoded values
     const currentMonth = "November";
-    const currentYear = 2021;
-    const currentDay = "2021-11-15";
+    const currentYear = 2024;
+    const currentDay = "2024-04-15";
 
-    /* Recent Transactions */
     const transactions = await Transaction.find()
       .limit(50)
       .sort({ createdOn: -1 });
 
-    /* Overall Stats */
     const overallStat = await OverallStat.find({ year: currentYear });
 
     const {

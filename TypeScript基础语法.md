@@ -129,5 +129,6 @@ for(const name of names) {
     console.log('你好'+name+'!')
   }
   sayHi('Rose')
+  
 /*  */
 ```
