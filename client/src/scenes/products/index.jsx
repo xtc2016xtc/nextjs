@@ -74,7 +74,7 @@ const Product = ({
           <Typography>id: {_id}</Typography>
           <Typography>Supply Left: {supply}</Typography>
           <Typography>
-            Yearly Sales This Year: {stat.yearlySalesTotal}
+            年度销售额: {stat.yearlySalesTotal}
           </Typography>
           <Typography>
             Yearly Units Sold This Year: {stat.yearlyTotalSoldUnits}

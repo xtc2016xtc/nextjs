@@ -29,29 +29,29 @@ const Dashboard = () => {
   const columns = [
     {
       field: "_id",
-      headerName: "ID",
+      headerName: "排名",
       flex: 1,
     },
     {
       field: "userId",
-      headerName: "User ID",
+      headerName: "用户ID",
       flex: 1,
     },
     {
       field: "createdAt",
-      headerName: "CreatedAt",
+      headerName: "创建时间",
       flex: 1,
     },
     {
       field: "products",
-      headerName: "# of Products",
+      headerName: "产品数量",
       flex: 0.5,
       sortable: false,
       renderCell: (params) => params.value.length,
     },
     {
       field: "cost",
-      headerName: "Cost",
+      headerName: "销售额度",
       flex: 1,
       renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
     },
@@ -60,7 +60,7 @@ const Dashboard = () => {
   return (
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
-        <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
+        <Header title="数据展示" subtitle="销售详细数据" />
 
         <Box>
           <Button
@@ -73,7 +73,7 @@ const Dashboard = () => {
             }}
           >
             <DownloadOutlined sx={{ mr: "10px" }} />
-            Download Reports
+            下载报告
           </Button>
         </Box>
       </FlexBetween>
@@ -90,10 +90,10 @@ const Dashboard = () => {
       >
         {/* ROW 1 */}
         <StatBox
-          title="Total Customers"
+          title="总客户数"
           value={data && data.totalCustomers}
           increase="+14%"
-          description="Since last month"
+          description="自上个月以来"
           icon={
             <Email
               sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
@@ -101,10 +101,10 @@ const Dashboard = () => {
           }
         />
         <StatBox
-          title="Sales Today"
+          title="今日销售额度"
           value={data && data.todayStats.totalSales}
           increase="+21%"
-          description="Since last month"
+          description="自昨天以来"
           icon={
             <PointOfSale
               sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
@@ -121,10 +121,10 @@ const Dashboard = () => {
           <OverviewChart view="sales" isDashboard={true} />
         </Box>
         <StatBox
-          title="Monthly Sales"
+          title="月度销售额"
           value={data && data.thisMonthStats.totalSales}
           increase="+5%"
-          description="Since last month"
+          description="自上个月以来"
           icon={
             <PersonAdd
               sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
@@ -132,10 +132,10 @@ const Dashboard = () => {
           }
         />
         <StatBox
-          title="Yearly Sales"
+          title="年度销售额"
           value={data && data.yearlySalesTotal}
           increase="+43%"
-          description="Since last month"
+          description="自上个月以来"
           icon={
             <Traffic
               sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
@@ -188,7 +188,7 @@ const Dashboard = () => {
           borderRadius="0.55rem"
         >
           <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
-            Sales By Category
+            分类销售额度
           </Typography>
           <BreakdownChart isDashboard={true} />
           <Typography
@@ -196,8 +196,7 @@ const Dashboard = () => {
             fontSize="0.8rem"
             sx={{ color: theme.palette.secondary[200] }}
           >
-            Breakdown of real states and information via category for revenue
-            made for this year and total sales.
+            按类别列出今年的收入和总销售额的具体情况和信息。
           </Typography>
         </Box>
       </Box>
